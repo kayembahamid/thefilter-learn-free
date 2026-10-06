@@ -4,55 +4,74 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="dark" />
-  <meta name="description" content="The Filter AI. A training game where you play the guardrail on an AI assistant. Catch prompt injections, jailbreaks, and encoded payloads. Covers the OWASP LLM Top 10 for Applications 2025." />
+  <meta name="theme-color" content="#05060d" />
+  <meta name="description" content="The Filter AI. A training game where you play the guardrail on an AI assistant. Catch prompt injections, jailbreaks, and encoded payloads, then build, break and defend your own local AI agent. Covers the OWASP LLM Top 10 for Applications 2025." />
   <title>The Filter AI · AI Prompt Injection Defense Training</title>
+  <link rel="icon" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="lab/lab.css" />
 </head>
 <body>
-  <!-- Drifting node field. Purely decorative, drawn by bg.js. -->
+  <!-- The night sky and moon, drawn by stars.js. Decorative only. -->
   <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <a class="skip" href="#screen">Skip to content</a>
+
+  <!-- One header for every section. The engine fills the Pro badge, the
+       nav state and the XP figures. -->
+  <header class="topbar">
+    <div class="topbar-in">
+      <a class="tb-brand" href="#/" aria-label="The Filter AI, home">
+        <img src="logo.png" alt="" width="320" height="320" decoding="async" />
+        <span class="wordmark">The Filter <span class="ai">AI</span></span>
+        <span class="pro-badge" id="proBadge" hidden>Pro</span>
+        <span class="free-badge" id="freeBadge" hidden>Free</span>
+      </a>
+      <div class="tb-stats" aria-label="Your score">
+        <span class="stat-xp" id="hudXp">0 XP</span>
+        <span class="stat-streak" id="hudStreak">🔥 0</span>
+      </div>
+      <nav class="tb-nav" id="topnav" aria-label="Sections">
+        <a href="#/hub" data-nav="hub" id="navHub">Hub</a>
+        <a href="#/course" data-nav="course">Course</a>
+        <a href="#/range" data-nav="range" id="navRange">Practice Range</a>
+        <a href="#/lab" data-nav="lab" id="navLab">Lab</a>
+        <a href="#/unlock" class="tb-cta" id="navBuy" hidden>Get full access</a>
+      </nav>
+    </div>
+  </header>
 
   <!--
     Config lives on #app as data-* attributes (kept off inline <script> so the
-    page stays CSP-compatible). To change the paid key or store link, edit the
-    two attributes below. Nothing else needs to change.
+    page stays CSP-compatible). data-price is the one place the price text
+    lives for the game screens.
   -->
   <div class="app" id="app"
        data-free-only="true"
-       data-gumroad-url="https://hamcodes.gumroad.com/l/jxdjnw">
+       data-gumroad-url="https://hamcodes.gumroad.com/l/jxdjnw"
+       data-price="$39.90"
+       data-full-url="https://private.hamcodes.com">
 
-    <!-- Desktop-only vertical level map (hidden below 1024px via CSS) -->
+    <!-- Desktop-only unit map, course view only -->
     <aside class="levelmap" id="levelmap" aria-hidden="true"></aside>
 
-    <main class="stage">
-      <!-- HUD: brand · XP · streak · level -->
-      <div class="hud">
-        <span class="brand">The Filter AI</span>
-        <div class="stats">
-          <span class="stat-xp" id="hudXp">0 XP</span>
-          <span class="stat-streak" id="hudStreak">🔥 0</span>
-          <span class="stat-level" id="hudLevel">Unit 1 / 7</span>
-        </div>
+    <main class="stage" id="main">
+      <div class="course-hud" id="courseHud" hidden>
+        <div class="row"><span id="hudLevel">Unit 1 / 7</span><span id="hudEx"></span></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
       </div>
-      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-
-      <!-- Main nav. Only shown once the paid tier is unlocked. -->
-      <nav class="topnav" id="topnav" hidden>
-        <button type="button" class="navlink" id="navTraining">Training</button>
-        <button type="button" class="navlink" id="navRange">Practice Range</button>
-      </nav>
-
-      <!-- Screens render here -->
-      <div id="screen"></div>
+      <div id="screen" tabindex="-1"></div>
     </main>
   </div>
 
-  <!-- Load order matters: content + certificate provide globals the engine uses -->
-  <script src="bg.js"></script>
+  <!-- Load order matters: content, range and the lab provide globals the
+       engine reads; lab.js waits for the engine's window.FILTER API. -->
+  <script src="stars.js"></script>
   <script src="content.js"></script>
+  <script src="range.js"></script>
+  <script src="lab/lab-config.js"></script>
   <script src="certificate.js"></script>
   <script src="engine.js"></script>
 </body>
