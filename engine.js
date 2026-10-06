@@ -38,7 +38,7 @@
   var ds = (appEl && appEl.dataset) || {};
   var CONFIG = {
     purchaseKey: ds.purchaseKey || "",
-    gumroadUrl:  ds.gumroadUrl  || "https://hamcodes.gumroad.com/l/jxdjnw",
+    gumroadUrl:  ds.gumroadUrl  || "https://gumroad.com/checkout?product=jxdjnw",
     price:       ds.price       || "$39.90",
     fullUrl:     ds.fullUrl     || "https://private.hamcodes.com"
   };
