@@ -697,3 +697,23 @@ body.view-hub .app,body.view-range .app,body.view-lab .app{max-width:1220px}
    screen-reader users land at the top of the new view. It is not a control,
    so it needs no focus ring. */
 #screen:focus{outline:none}
+
+/* Practice Range on phones. The filter bar used to stay stuck under the
+   header while you scrolled, and with nine filter pills stacked it grew to
+   two thirds of the screen and let pills spill over the cards. On phones and
+   small tablets it now scrolls away with the page, and the pills sit in one
+   row you swipe sideways. The sticky bar stays on wide screens, where the
+   header is one row and the pills fit. */
+@media (max-width:899px){
+  .range-filter{position:static;background:none;padding:0 0 6px;margin-bottom:14px;z-index:auto}
+  .rf-pills{
+    flex-wrap:nowrap;overflow-x:auto;gap:8px;padding:2px 2px 8px;margin:0 -2px;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    -webkit-mask-image:linear-gradient(90deg,#000 92%,transparent);
+            mask-image:linear-gradient(90deg,#000 92%,transparent);
+  }
+  .rf-pills::-webkit-scrollbar{display:none}
+  .r-pill{flex:none;white-space:nowrap}
+  .range-sec{scroll-margin-top:120px}
+  .range-stats{margin-bottom:4px}
+}

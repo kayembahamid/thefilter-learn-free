@@ -1068,7 +1068,7 @@
         "<div class='rf-search'>" +
           "<span class='rf-icon' aria-hidden='true'>⌕</span>" +
           "<input type='search' id='rangeSearch' autocomplete='off' spellcheck='false' " +
-            "placeholder='Search " + RANGE_ITEMS.length + " resources by name, level or topic' " +
+            "placeholder='Search " + RANGE_ITEMS.length + " resources' " +
             "aria-label='Search the Practice Range' />" +
         "</div>" +
         "<div class='rf-pills' id='rangePills'>" + pills + "</div>" +
