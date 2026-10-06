@@ -260,3 +260,40 @@
 /* long inline code (paths, urls) must wrap rather than widen the page */
 .teach code,.lab-steps code,.lab-note code,.checklist code,.course-links code{overflow-wrap:anywhere;word-break:break-word}
 .teach,.lab-note,.checklist,.lab-steps{min-width:0}
+
+/* ---------- guidance: start here, what to do now, briefings, next up ---------- */
+.lab-start{background:linear-gradient(160deg,rgba(169,139,255,.10),var(--surface) 70%);border:1px solid rgba(169,139,255,.3);border-radius:16px;padding:18px;margin:18px 0}
+.lab-start h2{font-family:var(--display);font-size:var(--text-display);margin:0 0 10px}
+.lab-start ol{margin:0 0 12px;padding-left:22px;color:var(--read);display:grid;gap:8px;line-height:1.6;font-size:15px}
+.lab-start li b{color:var(--text)}
+.lab-start .ls-real{margin:0;padding:12px 14px;background:rgba(61,219,163,.07);border-radius:11px;color:var(--read);font-size:14.5px;line-height:1.6}
+.lab-start .ls-real b{color:var(--text)}
+
+.lab-guide{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 14px;padding:11px 14px;border-radius:12px;background:var(--surface-2);border-left:3px solid var(--violet)}
+.lab-guide.laptop{border-left-color:var(--amber);background:rgba(232,179,60,.07)}
+.lab-guide p{margin:0;flex:1 1 260px;color:var(--read);font-size:14.5px;line-height:1.55}
+.lab-guide p b{color:var(--text)}
+.lg-chip{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);border:1px solid rgba(169,139,255,.4);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.lab-guide.laptop .lg-chip{color:var(--amber);border-color:rgba(232,179,60,.5)}
+
+.lab-brief{margin:14px 0 8px;display:grid;gap:12px}
+.lb-meta{display:flex;flex-wrap:wrap;gap:8px}
+.lb-meta span{font-size:13.5px;color:var(--read);background:var(--surface-2);border-radius:999px;padding:6px 13px}
+.lb-meta b{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);margin-right:8px}
+.lb-grid{display:grid;gap:10px}
+@media (min-width:900px){ .lab-col .lb-grid{grid-template-columns:1fr} }
+.lb-grid>div{background:var(--surface-2);border-radius:12px;padding:13px 15px}
+.lb-grid h3{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin:0 0 6px}
+.lb-grid p,.lb-grid li{color:var(--read);font-size:14.5px;line-height:1.6;margin:0}
+.lb-grid ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.lb-start{margin:0;padding:12px 14px;border-radius:11px;background:rgba(169,139,255,.09);color:var(--read);font-size:14.5px;line-height:1.6}
+.lb-start b{color:var(--text)}
+.next-up{margin:10px 2px 0;font-size:13.5px;color:var(--muted)}
+.next-up b{color:var(--read);font-weight:600}
+.lab-note.real{margin-top:16px}
+
+/* scorecard row titles: a legend sits on the border of its fieldset by
+   default, which made it overlap the card. Float it into the flow instead. */
+.sc-row{position:relative}
+.sc-legend{float:left;width:100%;margin:0 0 4px;padding:0}
+.sc-legend + *{clear:both}

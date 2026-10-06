@@ -57,6 +57,8 @@ const LAB_CONFIG = {
 
   // Public teaser shown on the locked Lab screen (free site and no key).
   teaser: {
+    laptop: "You only need a laptop. Everything runs on your own machine with fake data, and every step says what to do next, so it works if this is your first time. It is the same method enterprise security teams use to test AI systems in an isolated test lab. Only test systems you own or have written permission to test.",
+    outcomes: ["Run and size local AI models", "Build a tool-using agent, in code or no-code", "Test an AI app for prompt injection", "Add defences and measure them honestly", "Write a short red team findings report"],
     stages: [
       { title: "Run it.",    blurb: "Run an open-weights model on your own laptop. A calculator tells you what your machine can handle before you download anything." },
       { title: "Build it.",  blurb: "Build a small agent that lists, reads and adds up your notes. In plain Python, or with no code at all in n8n." },

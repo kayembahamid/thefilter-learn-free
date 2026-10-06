@@ -1266,7 +1266,9 @@
           "<span class='gate-badge pro'>Included with full access</span>" +
           "<h1>" + esc(LABCFG.name) + "</h1>" +
           "<p class='lede'>" + esc(LABCFG.story || "") + "</p>" +
+          (t.laptop ? "<p><b>You only need a laptop.</b> " + esc(String(t.laptop).replace(/^You only need a laptop\.\s*/, "")) + "</p>" : "") +
           "<ul class='howto'>" + stages + "</ul>" +
+          (t.outcomes ? "<p><b>What you will be able to do:</b></p><ul class='howto'>" + t.outcomes.map(function (o, i) { return "<li><span class='ic'>" + (i + 1) + "</span><div>" + esc(o) + "</div></li>"; }).join("") + "</ul>" : "") +
           "<div class='covers'>" + gets + "</div>" +
           "<div class='btn-stack'>" +
             "<button class='btn pro full' id='labBuy'>Get full access for " + esc(CONFIG.price) + "</button>" +
